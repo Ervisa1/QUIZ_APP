@@ -1,0 +1,49 @@
+
+<section id="options">
+    <div class="container">
+        <form action="#" method="post" [formGroup]="startGameForm" (ngSubmit)="onSubmit()">
+<!--            th:action="@{/select}" th:object="${gameOptions}"-->
+            <div class="form-row">
+                <div class="form-group">
+                    <h4>Questions:</h4>
+                    <label for="numberOfQuestions">Number: </label>
+                    <input class="form-control" name="numberOfQuestions" id="numberOfQuestions"
+                           formControlName="numberOfQuestions"
+                           type="number" min="1" max="20" step="1" value="5"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h4>Difficulty:</h4>
+                <div *ngFor="let difficulty of this.difficulties; let i = index">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="difficulty"
+                               formControlName="difficulty"
+                               id="'difficulty_' + {{difficulty}}" value="{{difficulty}}">
+                        <label class="form-check-label" for="'difficulty_' + {{difficulty}}"
+                               >{{difficulty}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <h4>Category:</h4>
+                    <div *ngFor="let category of this.categories; let i = index">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="categoryId"
+                                   formControlName="categoryId"
+                                   id="'category_' + {{category.id}}" value="{{category.id}}">
+                            <label class="form-check-label" for="'category_' + {{category.id}}"
+                                   >{{category.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Play!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

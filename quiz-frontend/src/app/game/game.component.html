@@ -1,0 +1,31 @@
+<section id="options">
+    <div class="container">
+        <form action="#" method="post" [formGroup]="submitAnswerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <h3>
+                    Question {{gameState.currentQuestionNumber}} / {{gameState.gameOptions.numberOfQuestions}}:
+                </h3>
+                <h4>{{gameState.currentQuestionText}}</h4>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <p>Select correct answer:</p>
+                    <div *ngFor="let answer of gameState.currentQuestionAnswers; let i = index">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer"
+                                   id="answer_{{i}}" value="{{answer}}" formControlName="answer">
+                            <label class="form-check-label" for="answer_{{i}}">
+                                {{answer}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
