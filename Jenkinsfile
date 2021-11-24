@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('building') {
       steps {
-        build 'dockerfile'
+        build 'Dockerfile'
       }
     }
 
